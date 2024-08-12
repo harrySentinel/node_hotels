@@ -13,6 +13,9 @@ app.get('/', function (req, res) {
   res.send('welcome to our server !!')
 })
 
+app.get('/', function (req, res){
+  res.send('abe bhai chal to rha hai, wo bhi smoothly')
+})
 
 
 // import the router files
