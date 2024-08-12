@@ -8,8 +8,8 @@ require('dotenv').config();
 // set up MongoDB connection
 
 mongoose.connect(mongoURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
     ssl: true
 })
 
