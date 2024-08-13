@@ -17,6 +17,15 @@ app.get('/', function (req, res){
   res.send('abe bhai chal to rha hai, wo bhi smoothly')
 })
 
+// Middleware Function
+const logRequest = (req, res, next) => {
+  console.log(`${new Date().toLocaleString()} Request Made to : ${req.originalUrl}`);
+  next();  // move on to next phase
+}
+
+app.get('/', logRequest, function (req, res){
+     res.send('Welcome to our Hotel');
+})
 
 // import the router files
 const personRoutes = require('./routes/personRoutes');
