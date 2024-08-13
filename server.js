@@ -2,8 +2,8 @@ const express = require('express')
 const app = express();
 const db = require('./db');
 require('dotenv').config();
-const passport = require('passport');
-const LocalStratergy = require('passport-local').Strategy;
+const passport = require('./auth');
+
 
 // bodyParser is a middleware.
 const bodyParser = require('body-parser');
@@ -11,13 +11,7 @@ app.use(bodyParser.json()); // req.body
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', function (req, res) {
-  res.send('welcome to our server !!')
-})
 
-app.get('/', function (req, res){
-  res.send('abe bhai chal to rha hai, wo bhi smoothly')
-})
 
 // Middleware Function
 const logRequest = (req, res, next) => {
@@ -26,6 +20,9 @@ const logRequest = (req, res, next) => {
 }
 
 app.use(logRequest); // this line tells express to use this middleware for all routes
+
+app.use(passport.initialize());
+const localAuthMiddleware = passport.authenticate('local', {session: false})
 
 app.get('/', function (req, res){
      res.send('Welcome to our Hotel');
@@ -36,7 +33,7 @@ const personRoutes = require('./routes/personRoutes');
 const menuItemRoutes = require('./routes/menuItemRoutes');
 
 // use the routers
-app.use('/person', personRoutes);
+app.use('/person',localAuthMiddleware, personRoutes);
 app.use('/menu', menuItemRoutes);
 
 
