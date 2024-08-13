@@ -2,6 +2,8 @@ const express = require('express')
 const app = express();
 const db = require('./db');
 require('dotenv').config();
+const passport = require('passport');
+const LocalStratergy = require('passport-local').Strategy;
 
 // bodyParser is a middleware.
 const bodyParser = require('body-parser');
