@@ -20,10 +20,12 @@ app.get('/', function (req, res){
 // Middleware Function
 const logRequest = (req, res, next) => {
   console.log(`${new Date().toLocaleString()} Request Made to : ${req.originalUrl}`);
-  next();  // move on to next phase
+  next();  // move on to next phase // it's a callback function which signals to express
 }
 
-app.get('/', logRequest, function (req, res){
+app.use(logRequest); // this line tells express to use this middleware for all routes
+
+app.get('/', function (req, res){
      res.send('Welcome to our Hotel');
 })
 
