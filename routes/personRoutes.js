@@ -4,7 +4,7 @@ const Person =  require('./../models/person');
 // const { findByIdAndUpdate } = require('../models/MenuItem');
 
 // POST route to add a person
-router.post('/', async(req, res) =>{
+router.post('/signup', async(req, res) =>{
 
     try{
        const data = req.body // assume kar rhe request body person data ko contain kr rhi
@@ -25,7 +25,7 @@ router.post('/', async(req, res) =>{
 })
 
 //GET route to add a person
-router.get('/', async (req, res) => {
+router.get('/signup', async (req, res) => {
     try{
       const harry = await Person.find();
       console.log('data fetched of person');
