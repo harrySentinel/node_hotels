@@ -11,8 +11,6 @@ app.use(bodyParser.json()); // req.body
 
 const PORT = process.env.PORT || 3000;
 
-
-
 // Middleware Function
 const logRequest = (req, res, next) => {
   console.log(`${new Date().toLocaleString()} Request Made to : ${req.originalUrl}`);
