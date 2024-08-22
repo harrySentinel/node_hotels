@@ -80,7 +80,7 @@ router.get('/profile',jwtAuthMiddleware, async (req, res) => {
 })
 
 //GET route to add a person
-router.get('/',  async (req, res) => {
+router.get('/', jwtAuthMiddleware,  async (req, res) => {
     try{
       const harry = await Person.find();
       console.log('data fetched of person');
